@@ -1,5 +1,3 @@
-# project_name
-
 # Vanillin
 
 Way to get coding using community Jupyter containers
@@ -14,7 +12,7 @@ It's super simple. This is just taking the Jupyter Docker containers and setting
 Can run one line to use an image on whatever you're working on.
 
 ```
-    docker run --rm -p 10000:8888 -e JUPYTER_ENABLE_LAB=yes -v "$PWD":/home/jovyan/work zachbogart/vanillin:v1.1
+docker run --rm -p 10000:8888 -e JUPYTER_ENABLE_LAB=yes -v "$PWD":/home/jovyan/work zachbogart/vanillin:v1.1
 ```
 
 ## Use as Template
