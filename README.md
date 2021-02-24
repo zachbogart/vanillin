@@ -10,6 +10,12 @@ Run one line to use JupyterLab environment with any custom preferences built-in:
 docker run --rm -p 10000:8888 -e JUPYTER_ENABLE_LAB=yes -v "$PWD":/home/jovyan/work zachbogart/vanillin:v1.1
 ```
 
+### What the Command Does
+
+This command is explained in the [Jupyter Docker Stacks Quickstart](https://jupyter-docker-stacks.readthedocs.io/en/latest/#quick-start), Example 3
+
+In this case, `zachbogart/vanillin` (with the provided tag after the colon) is built off of a base docker image provided by the Jupyter Docker Stacks. Any additional setup is included in the Dockerfile and the result is pushed to DockerHub, which is used to run a container. So running the command will pull the base image if not already available locally, add any custom stuff, and start JupyterLab.
+
 ## Use as Template
 
 Can use this repo as a template for a new project. Includes Dockerfile, can clone and build it locally if that's your preference.
@@ -36,5 +42,12 @@ Sincerely,
 Past Me
 
 *** 
+
+### Further Reading
+
+- [Jupyter Docker Stacks](https://jupyter-docker-stacks.readthedocs.io/en/latest/): Main documentation for "ready-to-run Docker images containing Jupyter applications and interactive computing tools". This explains all the ins-and-outs regarding the image setup, versioning schema, setting up additional features, etc.
+- [Image Selection](https://jupyter-docker-stacks.readthedocs.io/en/latest/using/selecting.html): All docker images available on DockerHub, used as starting point for this repo. Can easily find image by filtering for given type, links to DockerHub.
+
+***
 
 Made with 💖
