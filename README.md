@@ -10,6 +10,33 @@ Run one line to use JupyterLab environment with any custom preferences built-in:
 docker run --rm -p 10000:8888 -e JUPYTER_ENABLE_LAB=yes -v "$PWD":/home/jovyan/work zachbogart/vanillin:v1.1
 ```
 
+### Add Alias for zsh
+
+Can add this alias function to `~/.zshrc`. Run different versions in an approachable command:
+```
+# vanillin: using jupyterlab in one go
+# src: https://github.com/zachbogart/vanillin
+vanillin() {
+    EMOJI=🍦
+    if [ "$#" = 2 ]
+    then 
+        echo "$EMOJI Version $1 on port $2 \n$EMOJI http://localhost:$2"
+        docker run --rm -p "$2":8888 -e JUPYTER_ENABLE_LAB=yes -v "$PWD":/home/jovyan/work zachbogart/vanillin:"$1"
+    elif [ "$#" = 1 ]
+    then
+        echo "$EMOJI Version $1 on port 10000 \n$EMOJI http://localhost:10000"
+        docker run --rm -p 10000:8888 -e JUPYTER_ENABLE_LAB=yes -v "$PWD":/home/jovyan/work zachbogart/vanillin:"$1"
+    else
+        echo "$EMOJI Usage: vanillin version [port]\n$EMOJI   src: https://github.com/zachbogart/vanillin"
+    fi
+}
+```
+
+```
+🍦 Usage: vanillin version [port]
+```
+
+
 ### What the Command Does
 
 This command is explained in the [Jupyter Docker Stacks Quickstart](https://jupyter-docker-stacks.readthedocs.io/en/latest/#quick-start), Example 3
