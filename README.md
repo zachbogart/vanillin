@@ -12,15 +12,15 @@ Run JupyterLab:
 vanillin IMAGE_NAME 10000
 ```
 
-Don't have `vanillin` alias installed? Add to `zsh` here.
+Don't have `vanillin` alias installed? Add to `zsh` [here](https://github.com/zachbogart/vanillin#vanillin).
 
 ***
 
 # Vanillin
 
-Get coding using community Jupyter containers ("regular cola", 😀) just the way you like 'em ("vanilla cola", 🤩).
+Get coding using community Jupyter containers ("regular cola", 😀) just the way you like 'em ("vanilla cola", 🤩). Makes it easier to work with Jupyter Docker containers, simplifying commands and providing a nice project template.
 
-## Add vanillin alias
+## 0. Add vanillin alias
 
 Add this alias function to `~/.zshrc`. Makes it easier to build/run docker images for a given project
 
@@ -67,9 +67,12 @@ vanillin() {
 }
 ```
 
-## Use as Template
+## 1. Use repo as Template
 
-Can use this repo as a template for a new project.
+Can use this repo as a template for a new project. Can
+
+- Modify existing Dockerfile to include packages on start
+- Make commands to interact with project simpler
 
 *** 
 
