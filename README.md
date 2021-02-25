@@ -1,74 +1,83 @@
+# project_template
+
+### Run with vanillin 
+
+Build image:
+```
+vanillin IMAGE_NAME
+```
+
+Run JupyterLab:
+```
+vanillin IMAGE_NAME 10000
+```
+
+Don't have `vanillin` alias installed? Add to `zsh` here.
+
+***
+
 # Vanillin
 
 Get coding using community Jupyter containers ("regular cola", 😀) just the way you like 'em ("vanilla cola", 🤩).
 
-## Run JupyterLab
+## Add vanillin alias
 
-Run one line to use JupyterLab environment with any custom preferences built-in:
+Add this alias function to `~/.zshrc`. Makes it easier to build/run docker images for a given project
 
 ```
-docker run --rm -p 10000:8888 -e JUPYTER_ENABLE_LAB=yes -v "$PWD":/home/jovyan/work zachbogart/vanillin:v1.1
-```
-
-### Add Alias for zsh
-
-Can add this alias function to `~/.zshrc`. Run different versions in an approachable command:
-```
-# vanillin: using jupyterlab in one go
-# src: https://github.com/zachbogart/vanillin
+# vanillin: alias for docker build/run JupyterLab
 vanillin() {
     EMOJI=🍦
-    if [ "$#" = 2 ]
-    then 
-        echo "$EMOJI Version $1 on port $2 \n$EMOJI http://localhost:$2"
-        docker run --rm -p "$2":8888 -e JUPYTER_ENABLE_LAB=yes -v "$PWD":/home/jovyan/work zachbogart/vanillin:"$1"
-    elif [ "$#" = 1 ]
+    if [ "$#" = 1 ]
     then
-        echo "$EMOJI Version $1 on port 10000 \n$EMOJI http://localhost:10000"
-        docker run --rm -p 10000:8888 -e JUPYTER_ENABLE_LAB=yes -v "$PWD":/home/jovyan/work zachbogart/vanillin:"$1"
+        echo "$EMOJI"
+        echo "$EMOJI Building image \"$1\" from this directory's Dockerfile..."
+        echo "$EMOJI"
+
+        docker build --rm -t "$1" .
+    elif [ "$#" = 2 ]
+    then
+        echo "$EMOJI"
+        echo "$EMOJI Opening JupyterLab from image \"$1\" on port $2"
+        echo "$EMOJI"
+        echo "$EMOJI http://localhost:$2"
+        echo "$EMOJI"
+
+        docker run --rm -p "$2":8888 -e JUPYTER_ENABLE_LAB=yes -v "$PWD":/home/jovyan/work "$1"
     else
-        echo "$EMOJI Usage: vanillin version [port]\n$EMOJI   src: https://github.com/zachbogart/vanillin"
+        echo "$EMOJI"
+        echo "$EMOJI Usage:"
+        echo "$EMOJI"
+        echo "$EMOJI  vanillin name"
+        echo "$EMOJI    Alias for: \`docker build --rm -t name .\`"
+        echo "$EMOJI    - Shorthand for building image from pwd Dockerfile"
+        echo "$EMOJI"
+        echo "$EMOJI  vanillin name port"
+        echo "$EMOJI    Alias for: \`docker run --rm -p port:8888 -e JUPYTER_ENABLE_LAB=yes -v "\$PWD":/home/jovyan/work name\`"
+        echo "$EMOJI    - Shorthand for running JupyterLab"
+        echo "$EMOJI"
+        echo "$EMOJI  -- Example --"
+        echo "$EMOJI"
+        echo "$EMOJI    Build \`cool_image_name\` from Dockerfile and run JupyterLab of the result on port 10000"
+        echo "$EMOJI"
+        echo "$EMOJI    1. \`vanillin cool_image_name\`"
+        echo "$EMOJI    2. \`vanillin cool_image_name 10000\`"
+        echo "$EMOJI"
     fi
 }
 ```
 
-```
-🍦 Usage: vanillin version [port]
-```
+## Use as Template
 
+Can use this repo as a template for a new project.
 
-### What the Command Does
+*** 
+
+### What the `docker run` Command Does
 
 This command is explained in the [Jupyter Docker Stacks Quickstart](https://jupyter-docker-stacks.readthedocs.io/en/latest/#quick-start), Example 3
 
 In this case, `zachbogart/vanillin` (with the provided tag after the colon) is built off of a base docker image provided by the Jupyter Docker Stacks. Any additional setup is included in the Dockerfile and the result is pushed to DockerHub, which is used to run a container. So running the command will pull the base image if not already available locally, add any custom stuff, and start JupyterLab.
-
-## Use as Template
-
-Can use this repo as a template for a new project. Includes Dockerfile, can clone and build it locally if that's your preference.
-
-## What is Vanillin?
-
-Dear me,
-
-Hi future me! (and "the internet")
-
-- I realize I spend a lot of time just setting things up rather than working on something cool
-- Hopefully this will smooth some of that out
-
-It's super simple, but super useful. This is just taking the lovingly crafted [Jupyter Docker containers](https://jupyter-docker-stacks.readthedocs.io/en/latest/) and setting them up how I like them (include some packages, etc). This will evolve over time, but it will make it easy to just grab a setup I'm used to and go. Worry less about dependencies and environments and focus more on learning new coding things: Jupyter notebooks for everything, one command away.
-
-As preferences/needs change, can update this repo with an updated Dockerfile (different preferences off of existing base images), add a new git tag (`v[0-9.]*`) and create different releases. These are then built using DockerHub, so the setup can travel no matter where you are, and you can use the release that suits your fancy.
-
-You can find [published releases](https://github.com/zachbogart/vanillin/releases) and go from there or [visit DockerHub](https://hub.docker.com/r/zachbogart/vanillin) to see all published images.
-
-Stop setting things up. Start coding.
-
-Sincerely,
-
-Past Me
-
-*** 
 
 ### Further Reading
 
