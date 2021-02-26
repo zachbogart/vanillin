@@ -60,7 +60,8 @@ vanillin() {
         echo "$EMOJI"
         echo "$EMOJI  -- Example --"
         echo "$EMOJI"
-        echo "$EMOJI    Build \`cool_image_name\` from Dockerfile and run JupyterLab of the result on port 10000"
+        echo "$EMOJI    Build \`cool_image_name\` from pwd Dockerfile"
+        echo "$EMOJI     and run JupyterLab on the result, on port 10000"
         echo "$EMOJI"
         echo "$EMOJI    1. \`vanillin cool_image_name\`"
         echo "$EMOJI    2. \`vanillin cool_image_name 10000\`"
@@ -68,6 +69,8 @@ vanillin() {
     fi
 }
 ```
+
+After install, run `vanillin` in terminal for info on usage.
 
 ## 1. Use repo as a Template
 
