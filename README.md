@@ -28,6 +28,7 @@ Add this alias function to `~/.zshrc`. Makes it easier to build/run docker image
 
 ```
 # vanillin: alias for docker build/run JupyterLab
+# https://github.com/zachbogart/vanillin
 vanillin() {
     EMOJI=🍦
     if [ "$#" = 1 ]
@@ -70,7 +71,27 @@ vanillin() {
 }
 ```
 
-After install, run `vanillin` in terminal for info on usage.
+```
+🍦
+🍦 Usage:
+🍦
+🍦  vanillin name
+🍦    Alias for: `docker build --rm -t name .`
+🍦    - Shorthand for building image from pwd Dockerfile
+🍦
+🍦  vanillin name port
+🍦    Alias for: `docker run --rm -p port:8888 -e JUPYTER_ENABLE_LAB=yes -v $PWD:/home/jovyan/work name`
+🍦    - Shorthand for running JupyterLab
+🍦
+🍦  -- Example --
+🍦
+🍦    Build `cool_image_name` from pwd Dockerfile
+🍦     and run JupyterLab on the result, on port 10000
+🍦
+🍦    1. `vanillin cool_image_name`
+🍦    2. `vanillin cool_image_name 10000`
+🍦
+```
 
 ## 1. Use repo as a Template
 
