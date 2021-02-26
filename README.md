@@ -71,6 +71,7 @@ vanillin() {
 }
 ```
 
+#### Usage
 ```
 🍦
 🍦 Usage:
