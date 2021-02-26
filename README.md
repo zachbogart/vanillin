@@ -92,8 +92,6 @@ Process
 
 This command is explained in the [Jupyter Docker Stacks Quickstart](https://jupyter-docker-stacks.readthedocs.io/en/latest/#quick-start), Example 3
 
-In this case, `zachbogart/vanillin` (with the provided tag after the colon) is built off of a base docker image provided by the Jupyter Docker Stacks. Any additional setup is included in the Dockerfile and the result is pushed to DockerHub, which is used to run a container. So running the command will pull the base image if not already available locally, add any custom stuff, and start JupyterLab.
-
 ### Further Reading
 
 - [Jupyter Docker Stacks](https://jupyter-docker-stacks.readthedocs.io/en/latest/): Main documentation for "ready-to-run Docker images containing Jupyter applications and interactive computing tools". This explains all the ins-and-outs regarding the image setup, versioning schema, setting up additional features, etc.
