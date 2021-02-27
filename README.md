@@ -1,6 +1,6 @@
 # project_template
 
-### Run with vanillin 
+### Run this project with vanillin 
 
 Build image:
 ```
