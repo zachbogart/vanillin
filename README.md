@@ -22,57 +22,40 @@ Get coding using community Jupyter containers ("regular cola", 😀) just the wa
 
 Makes it easier to work with Jupyter Docker containers, simplifying commands and providing a nice project template.
 
-## 0. Add vanillin alias
+## 0. Add vanillin oh-my-zsh plugin
 
-Add this alias function to `~/.zshrc`. Makes it easier to build/run docker images for a given project
+Using oh-my-zsh, add vanillin as a plugin.
 
+Run this code in Terminal:
 ```
-# vanillin: alias for docker build/run JupyterLab
-# https://github.com/zachbogart/vanillin
-vanillin() {
-    EMOJI=🍦
-    if [ "$#" = 1 ]
-    then
-        echo "$EMOJI"
-        echo "$EMOJI Building image \"$1\" from this directory's Dockerfile..."
-        echo "$EMOJI"
-
-        docker build --rm -t "$1" .
-    elif [ "$#" = 2 ]
-    then
-        echo "$EMOJI"
-        echo "$EMOJI Opening JupyterLab from image \"$1\" on port $2"
-        echo "$EMOJI"
-        echo "$EMOJI http://localhost:$2"
-        echo "$EMOJI"
-
-        docker run --rm -p "$2":8888 -e JUPYTER_ENABLE_LAB=yes -v "$PWD":/home/jovyan/work "$1"
-    else
-        echo "$EMOJI"
-        echo "$EMOJI Usage:"
-        echo "$EMOJI"
-        echo "$EMOJI  vanillin name"
-        echo "$EMOJI    Alias for: \`docker build --rm -t name .\`"
-        echo "$EMOJI    - Shorthand for building image from pwd Dockerfile"
-        echo "$EMOJI"
-        echo "$EMOJI  vanillin name port"
-        echo "$EMOJI    Alias for: \`docker run --rm -p port:8888 -e JUPYTER_ENABLE_LAB=yes -v "\$PWD":/home/jovyan/work name\`"
-        echo "$EMOJI    - Shorthand for running JupyterLab"
-        echo "$EMOJI"
-        echo "$EMOJI  -- Example --"
-        echo "$EMOJI"
-        echo "$EMOJI    Build \`cool_image_name\` from pwd Dockerfile"
-        echo "$EMOJI     and run JupyterLab on the result, on port 10000"
-        echo "$EMOJI"
-        echo "$EMOJI    1. \`vanillin cool_image_name\`"
-        echo "$EMOJI    2. \`vanillin cool_image_name 10000\`"
-        echo "$EMOJI"
-    fi
-}
+mkdir $ZSH_CUSTOM/plugins/vanillin
+wget -O $ZSH_CUSTOM/plugins/vanillin/vanillin.plugin.zsh https://gist.githubusercontent.com/zachbogart/c01e88886855c39c4058d0baa43ec9ec/raw/vanillin.plugin.zsh
 ```
+
+Open `~/.zshrc` and add vanillin as a plugin. Might look like:
+```
+# Which plugins would you like to load?
+# Standard plugins can be found in ~/.oh-my-zsh/plugins/*
+# Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
+# Example format: plugins=(rails git textmate ruby lighthouse)
+# Add wisely, as too many plugins slow down shell startup.
+plugins=(git vanillin)
+```
+
+Update:
+```
+source ~/.zshrc
+```
+
+- uses [this Gist](https://gist.github.com/zachbogart/c01e88886855c39c4058d0baa43ec9ec) to create vanillin alias
 
 #### Usage
+
+Typing `vanillin`:
 ```
+🍦
+🍦 Vanillin: alias for docker build/run JupyterLab commands
+🍦 - GitHub: https://github.com/zachbogart/vanillin
 🍦
 🍦 Usage:
 🍦
