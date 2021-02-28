@@ -26,17 +26,23 @@ Run JupyterLab:
 docker run --rm -p 10000:8888 -e JUPYTER_ENABLE_LAB=yes -v $PWD:/home/jovyan/work name
 ```
 
+Don't have Docker installed? Download [here](https://docs.docker.com/get-docker/)
+
 ***
 
 # Vanillin
 
 Get coding using community Jupyter containers ("regular cola", 😀) just the way you like 'em ("vanilla cola", 🤩).
 
-A plugin for oh-my-zsh/ a repo template: makes it easier to work with Jupyter Docker containers, simplifying commands and providing a simple project template.
+**A plugin for oh-my-zsh & A repo template**: makes it easier to work with Jupyter Docker containers, simplifying commands and providing a simple project template.
 
 ## Add vanillin oh-my-zsh plugin
 
 Using [oh-my-zsh](https://ohmyz.sh/), add vanillin as a plugin.
+- Direct Link to [`vanillin.plugin.zsh` file](https://gist.githubusercontent.com/zachbogart/c01e88886855c39c4058d0baa43ec9ec)
+- Or follow along below
+
+### Plugin Walkthrough
 
 Run this code in Terminal:
 ```
@@ -108,14 +114,25 @@ Process
 - Run new image, accessing [JupyterLab](https://jupyterlab.readthedocs.io/)
 - Includes nice alias function to avoid having to type really long docker commands
 
+### Why?
+
+- Depend on Docker: Much less hassle regarding dependencies. Just specify base image and go
+- Easy to customize: add a `pip install` or `install.packages` to Dockerfile as `RUN` commands, and packages will persist between runs
+- Easy to share: Dockerfile describes dependencies, can run/work in same environment
+- R and Python at once: Go back and forth between R/Python in same Jupyter Environemnt with something like [jupyter-datascience-notebook](https://jupyter-docker-stacks.readthedocs.io/en/latest/using/selecting.html#jupyter-datascience-notebook)
+
 ### What the `docker run` Command Does
 
 This command is explained in the [Jupyter Docker Stacks Quickstart](https://jupyter-docker-stacks.readthedocs.io/en/latest/#quick-start), Example 3
 
+### Caveats
+
+Install using Jupyter Community Docker images can be large (2-4 GB). First install may take a few minutes, but using the same base image across different projects will reduce any instances of large install wait times (Docker will use cached base image). So don't get scared downloading a big base image: reuse it and every project afterwards will be speedy to build.
+
 ### Further Reading
 
 - [Jupyter Docker Stacks](https://jupyter-docker-stacks.readthedocs.io/en/latest/): Main documentation for "ready-to-run Docker images containing Jupyter applications and interactive computing tools". This explains all the ins-and-outs regarding the image setup, versioning schema, setting up additional features, etc.
-- [Image Selection](https://jupyter-docker-stacks.readthedocs.io/en/latest/using/selecting.html): All docker images available on DockerHub, used as starting point for this repo. Can easily find image by filtering for given type, links to DockerHub.
+- [Image Selection](https://jupyter-docker-stacks.readthedocs.io/en/latest/using/selecting.html): All docker images from Jupyter available on DockerHub, used as starting point for this repo. Can easily find image by filtering for given type, links to DockerHub.
 
 ***
 
