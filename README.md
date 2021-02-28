@@ -1,6 +1,6 @@
 # project_template
 
-### Run this project with vanillin 
+### Run this project with vanillin 🍦
 
 Build image:
 ```
@@ -12,7 +12,7 @@ Run JupyterLab:
 vanillin DOCKER_IMAGE_NAME 10000
 ```
 
-Don't have `vanillin` alias installed? Add as `oh-my-zsh` plugin [here](https://github.com/zachbogart/vanillin#vanillin).
+Don't have `vanillin` installed? Add as an `oh-my-zsh` plugin [here](https://github.com/zachbogart/vanillin#vanillin).
 
 ### Run this project manually
 
