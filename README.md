@@ -12,7 +12,7 @@ Run JupyterLab:
 vanillin DOCKER_IMAGE_NAME 10000
 ```
 
-Don't have `vanillin` installed? Add as an `oh-my-zsh` plugin [here](https://github.com/zachbogart/vanillin#vanillin).
+Don't have `vanillin` installed? Add as an `oh-my-zsh` plugin [here](https://github.com/zachbogart/vanillin#vanillin)
 
 ### Run this project manually
 
@@ -34,13 +34,14 @@ Don't have Docker installed? Download [here](https://docs.docker.com/get-docker/
 
 Get coding using community Jupyter containers ("regular cola", 😀) just the way you like 'em ("vanilla cola", 🤩).
 
-**A plugin for oh-my-zsh & A repo template**: makes it easier to work with Jupyter Docker containers, simplifying commands and providing a simple project template.
+**A plugin for oh-my-zsh** and **A repo template**: makes it easier to work with Jupyter Docker containers, simplifying commands and providing a simple project template.
 
 ## Add vanillin oh-my-zsh plugin
 
-Using [oh-my-zsh](https://ohmyz.sh/), add vanillin as a plugin.
-- Direct Link to [`vanillin.plugin.zsh` file](https://gist.githubusercontent.com/zachbogart/c01e88886855c39c4058d0baa43ec9ec)
-- Or follow along below
+Using [oh-my-zsh](https://ohmyz.sh/), add vanillin as a plugin. Makes it easier to build/run project docker containers for JupyterLab.
+
+- Follow along below
+- Or here's a direct link to the [`vanillin.plugin.zsh` file](https://gist.githubusercontent.com/zachbogart/c01e88886855c39c4058d0baa43ec9ec)
 
 ### Plugin Walkthrough
 
@@ -67,9 +68,19 @@ source ~/.zshrc
 
 - Uses [this Gist](https://gist.github.com/zachbogart/c01e88886855c39c4058d0baa43ec9ec) to create vanillin alias
 
-#### Usage
+### Usage
 
-Typing `vanillin`:
+```
+🍦  -- Example --
+🍦
+🍦    Build `cool_image_name` from pwd Dockerfile
+🍦     and run JupyterLab on the result, on port 10000
+🍦
+🍦    1. `vanillin cool_image_name`
+🍦    2. `vanillin cool_image_name 10000`
+```
+
+Type `vanillin` for usage:
 ```
 🍦
 🍦 Vanillin: alias for docker build/run JupyterLab commands
@@ -116,10 +127,10 @@ Process
 
 ### Why?
 
-- Depend on Docker: Much less hassle regarding dependencies. Just specify base image and go
-- Easy to customize: add a `pip install` or `install.packages` to Dockerfile as `RUN` commands, and packages will persist between runs
+- Depend on Docker: Much less hassle regarding dependencies. Just specify a base image and go
+- Easy to customize: add a `pip install` or `install.packages` to Dockerfile as `RUN` commands, and can tailor image to project-specific needs
 - Easy to share: Dockerfile describes dependencies, can run/work in same environment
-- R and Python at once: Go back and forth between R/Python in same Jupyter Environemnt with something like [jupyter-datascience-notebook](https://jupyter-docker-stacks.readthedocs.io/en/latest/using/selecting.html#jupyter-datascience-notebook)
+- R and Python at once: Go back and forth between R/Python in same Jupyter Environment with something like [jupyter-datascience-notebook](https://jupyter-docker-stacks.readthedocs.io/en/latest/using/selecting.html#jupyter-datascience-notebook)
 
 ### What the `docker run` Command Does
 
@@ -127,7 +138,7 @@ This command is explained in the [Jupyter Docker Stacks Quickstart](https://jupy
 
 ### Caveats
 
-Install using Jupyter Community Docker images can be large (2-4 GB). First install may take a few minutes, but using the same base image across different projects will reduce any instances of large install wait times (Docker will use cached base image). So don't get scared downloading a big base image: reuse it and every project afterwards will be speedy to build.
+- Installs using Jupyter Community Docker images can be large (2-4 GB). First install may take a few minutes, but using the same base image across different projects will reduce any instances of large install wait times (Docker will use cached base image). So don't get scared downloading a big base image: reuse it and every project afterwards will be speedy to build.
 
 ### Further Reading
 
