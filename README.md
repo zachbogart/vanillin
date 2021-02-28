@@ -23,7 +23,7 @@ docker build --rm -t DOCKER_IMAGE_NAME .
 
 Run JupyterLab:
 ```
-docker run --rm -p 10000:8888 -e JUPYTER_ENABLE_LAB=yes -v $PWD:/home/jovyan/work name
+docker run --rm -p 10000:8888 -e JUPYTER_ENABLE_LAB=yes -v $PWD:/home/jovyan name
 ```
 
 Don't have Docker installed? Download [here](https://docs.docker.com/get-docker/)
