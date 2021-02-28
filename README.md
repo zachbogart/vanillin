@@ -4,15 +4,27 @@
 
 Build image:
 ```
-vanillin IMAGE_NAME
+vanillin DOCKER_IMAGE_NAME
 ```
 
 Run JupyterLab:
 ```
-vanillin IMAGE_NAME 10000
+vanillin DOCKER_IMAGE_NAME 10000
 ```
 
-Don't have `vanillin` alias installed? Add to `zsh` [here](https://github.com/zachbogart/vanillin#vanillin).
+Don't have `vanillin` alias installed? Add as `oh-my-zsh` plugin [here](https://github.com/zachbogart/vanillin#vanillin).
+
+### Run this project manually
+
+Build image:
+```
+docker build --rm -t DOCKER_IMAGE_NAME .
+```
+
+Run JupyterLab:
+```
+docker run --rm -p 10000:8888 -e JUPYTER_ENABLE_LAB=yes -v $PWD:/home/jovyan/work name
+```
 
 ***
 
@@ -20,11 +32,11 @@ Don't have `vanillin` alias installed? Add to `zsh` [here](https://github.com/za
 
 Get coding using community Jupyter containers ("regular cola", 😀) just the way you like 'em ("vanilla cola", 🤩).
 
-Makes it easier to work with Jupyter Docker containers, simplifying commands and providing a nice project template.
+A plugin for oh-my-zsh/ a repo template: makes it easier to work with Jupyter Docker containers, simplifying commands and providing a simple project template.
 
-## 0. Add vanillin oh-my-zsh plugin
+## Add vanillin oh-my-zsh plugin
 
-Using oh-my-zsh, add vanillin as a plugin.
+Using [oh-my-zsh](https://ohmyz.sh/), add vanillin as a plugin.
 
 Run this code in Terminal:
 ```
@@ -32,7 +44,7 @@ mkdir $ZSH_CUSTOM/plugins/vanillin
 wget -O $ZSH_CUSTOM/plugins/vanillin/vanillin.plugin.zsh https://gist.githubusercontent.com/zachbogart/c01e88886855c39c4058d0baa43ec9ec/raw/vanillin.plugin.zsh
 ```
 
-Open `~/.zshrc` and add vanillin as a plugin. Might look like:
+Open `~/.zshrc` and add vanillin as a plugin. With comments, probably looks something like:
 ```
 # Which plugins would you like to load?
 # Standard plugins can be found in ~/.oh-my-zsh/plugins/*
@@ -47,7 +59,7 @@ Update:
 source ~/.zshrc
 ```
 
-- uses [this Gist](https://gist.github.com/zachbogart/c01e88886855c39c4058d0baa43ec9ec) to create vanillin alias
+- Uses [this Gist](https://gist.github.com/zachbogart/c01e88886855c39c4058d0baa43ec9ec) to create vanillin alias
 
 #### Usage
 
@@ -77,11 +89,11 @@ Typing `vanillin`:
 🍦
 ```
 
-## 1. Use repo as a Template
+## Use this repo as a template
 
 Can use this repo as a template for a new project. Simply:
 
-1. Rename `IMAGE_NAME` at the top to specify how you want to title your local images for this project
+1. Rename/Find & Replace `DOCKER_IMAGE_NAME` at the top to specify how you want to title your local images for this project
 2. Remove Doc info from this README (info after first line break)
 3. Ready to Go!
 
